@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/androidTest/assets"/></dataSet></merger>

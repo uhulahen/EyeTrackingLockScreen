@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name = "CameraBridgeViewBase" >
+       <attr name="show_fps" format="boolean"/>
+       <attr name="camera_id" format="integer" >
+          <enum name="any" value="-1" />
+          <enum name="back" value="99" />
+          <enum name="front" value="98" />
+       </attr>
+    </declare-styleable>
+    <string name="description">1. Sehen Sie frontal in die Kamera. Ihr gesamtes Gesicht sollte am Bildschirm sichtbar sein (auch das linke und rechte Ohr)\n2. Drücken Sie den "Capture Eye“ Button\n3. Schauen Sie nach links und rechts und verändern Sie den Wert der Schieberegler bis Sie den Freischaltcode 75 eingegeben haben\n4. Der Bildschirm wird freigeschalten\n\nAlternative:\nFalls das Verändern der Schieberegler aufgrund unzureichender Augenerkennung nicht korrekt funktioniert (z.B. bei schlechter Belichtung) können Sie die Schieberegler auch per Touch bewegen und dadurch den Code eingeben.
+    </string>
+
+    <string name="focustxt">SCHAUEN SIE GENAU\nAUF DEN WEISSEN PUNKT</string>
+
+    <string name="closedtxt">FÜHREN SIE DIE AUGENGESTE DURCH</string>
+    <string name="hinttxt">(LINKS - RECHTS - LINKS)</string>
+    <string name="blinktxt">BLINZELN SIE ABSCHLIESSEND\nZUR BESTÄTIGUNG</string>
+
+    <string name="opentxt">DER SCREEN WURDE ENTSPERRT</string>
+
+    <string name="devbtntxt">Entwickleransicht</string>
+    <string name="userbtntxt">Anwenderansicht</string>
+    <string name="buffertxt">Buffergröße in f/s</string>
+    <string name="intervaltxt">Intervallgröße in ms</string>
+</resources>

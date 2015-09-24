@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/debug/assets"/></dataSet></merger>

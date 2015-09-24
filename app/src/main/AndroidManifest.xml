@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="tuwien.eyetrackingexample"
+android:versionCode="1"
+android:versionName="1.0" >
+
+<uses-sdk android:minSdkVersion="8" />
+
+<application
+android:icon="@drawable/lockicon"
+android:label="@string/app_name"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >>
+
+<activity android:label="@string/app_name"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    android:screenOrientation="landscape"
+    android:excludeFromRecents="true"
+    android:launchMode="singleTask"
+    android:name=".FdActivity"
+    >
+
+    <!--<activity android:name=".FdActivity"
+        android:label="@string/app_name"
+        android:screenOrientation="landscape"
+        android:configChanges="keyboardHidden|orientation">    -->
+    <intent-filter >
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+
+
+<!--<activity
+    android:name=".StartLockScreen"
+    android:theme="@style/Theme.Transparent" >
+
+    <intent-filter >
+        <action android:name="android.intent.action.MAIN" />
+
+
+
+        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.HOME" />
+        <category android:name="android.intent.category.DEFAULT" />
+
+
+    </intent-filter>
+</activity>
+
+<service android:name="utils.LockscreenService" >
+</service>
+
+<receiver
+    android:enabled="true"
+    android:name="utils.LockscreenIntentReceiver" >
+    <intent-filter >
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+    </intent-filter>
+</receiver>-->
+
+</application>
+
+    <supports-screens android:resizeable="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="true" />
+
+<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+<uses-permission android:name="android.permission.CAMERA"/>
+
+<uses-feature android:name="android.hardware.camera" android:required="false"/>
+<uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+<uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+<uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
+</manifest>
