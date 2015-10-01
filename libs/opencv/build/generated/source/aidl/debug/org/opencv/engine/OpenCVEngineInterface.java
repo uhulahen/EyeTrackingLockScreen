@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/org/opencv/engine/OpenCVEngineInterface.aidl
+ * Original file: /Users/alexbrandner/Documents/GitHub Projects 2015/EyeTrackingLockScreen/libs/opencv/src/org/opencv/engine/OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

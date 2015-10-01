@@ -106,7 +106,8 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
             progressFlagLeft = true,
             progressFlagRight = true,
             closedOverlayFlag = true,
-            lrFlag = false;
+            lrFlag = false,
+            bufferFlagLeft = false, bufferFlagRight = false;
 
     double xCenter = -1;
     double yCenter = -1;
@@ -606,28 +607,46 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
             int xBuff=0;
             int yBuff=0;
             for(int i=0;i<xyBuffer.size();i++){
-                if(xyBuffer.get(i).get(0)> eyeCenterxEye){
-                    xBuff--;
-                }else if(xyBuffer.get(i).get(0)< eyeCenterxEye){
-                    xBuff++;
+                if(flag) {
+                    if (xyBuffer.get(i).get(0) > eyeCenterxEye) {
+                        xBuff--;
+                    } else if (xyBuffer.get(i).get(0) < eyeCenterxEye) {
+                        xBuff++;
+                    }
+                }else{
+                    if (xyBuffer.get(i).get(0) < eyeCenterxEye) {
+                        xBuff--;
+                    } else if (xyBuffer.get(i).get(0) > eyeCenterxEye) {
+                        xBuff++;
+                    }
                 }
             }
             if(xBuff<maxBuffx && (lastTimestamp.before(new Date(System.currentTimeMillis())))){
-                lastTimestamp = new Date(System.currentTimeMillis()+expiremilis);
-                Log.i(TAG, "lastTimestamp (left): "
-                        + lastTimestamp);
-                setProgressValue(numberLeft);
-                Log.i(TAG, "SeekBarLeft - xBuff: " + xBuff + " - yBuff: " + yBuff);
-                vibrate(150);
-                gestureList.add("left");
+                if(flag && bufferFlagLeft) {
+                    lastTimestamp = new Date(System.currentTimeMillis() + expiremilis);
+                    Log.i(TAG, "lastTimestamp (left): "
+                            + lastTimestamp);
+                    setProgressValue(numberLeft);
+                    Log.i(TAG, "LeftEye (left) - xBuff: " + xBuff + " - yBuff: " + yBuff);
+                    vibrate(150);
+                    gestureList.add("left");
+                }else if(!flag){
+                    Log.i(TAG, "RightEye (left) - xBuff: " + xBuff + " - yBuff: " + yBuff);
+                    bufferFlagLeft = true;
+                }
             }else if(xBuff>maxBuffx && (lastTimestamp.before(new Date(System.currentTimeMillis())))){
-                lastTimestamp = new Date(System.currentTimeMillis()+expiremilis);
-                Log.i(TAG, "lastTimestamp (right): "
+                if(flag && bufferFlagRight) {
+                    lastTimestamp = new Date(System.currentTimeMillis()+expiremilis);
+                    Log.i(TAG, "lastTimestamp (right): "
                         + lastTimestamp);
-                setProgressValue(numberRight);
-                Log.i(TAG, "SeekBarRight - xBuff: " + xBuff + " - yBuff: " + yBuff);
-                vibrate(50);
-                gestureList.add("right");
+                    setProgressValue(numberRight);
+                    Log.i(TAG, "LeftEye (right) - xBuff: " + xBuff + " - yBuff: " + yBuff);
+                    vibrate(50);
+                    gestureList.add("right");
+                }else if(!flag){
+                    Log.i(TAG, "RightEye (right) - xBuff: " + xBuff + " - yBuff: " + yBuff);
+                    bufferFlagRight = true;
+                }
             }
         }
         if(gestureList.size()>2) {
@@ -825,9 +844,15 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
                 255));
         Rect rec = new Rect(matchLoc_tx,matchLoc_ty);
         if(flag){
-            addToBuffer(matchLoc_tx.x,matchLoc_tx.y, eyeAreax, xyBuffer, flag, eyeCenterx); //TODO: Alex: relative x,y Koordinaten innerhalb des roten Bereiches (Eye Area) berechnen und einfügen - aber nur für ein Auge (Funktion wird ja 2x aufgerufen)
+                                //TODO: Alex: Relative Position des rechten Auges berechnen und in die Gestenentscheidung mit einbeziehen; Achtung: Rechtes Auge bewegt sich aufgrund der Kameraposition weniger als das linke
+            bufferFlagLeft=true;
+            bufferFlagRight=true;
+
+            addToBuffer(matchLoc_tx.x,matchLoc_tx.y, eyeAreax, xyBuffer, flag, eyeCenterx);
             Log.i(TAG, "xyBuffer (left): " + xyBuffer);
         }else{
+            //bufferFlagLeft=false;
+            //bufferFlagRight=false;
             //addToBuffer(matchLoc_tx.x + rec.width,matchLoc_tx.y, eyeAreax, xyBuffer, flag, eyeCenterxRight);
             //Log.i(TAG, "xyBuffer (right): " + xyBuffer);
         }

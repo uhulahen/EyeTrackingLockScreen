@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/src/release/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/alexbrandner/Documents/GitHub Projects 2015/EyeTrackingLockScreen/libs/opencv/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/alexbrandner/Documents/GitHub Projects 2015/EyeTrackingLockScreen/libs/opencv/src/release/assets"/></dataSet></merger>

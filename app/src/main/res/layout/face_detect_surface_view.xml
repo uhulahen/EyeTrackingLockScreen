@@ -140,7 +140,8 @@
         android:text="method"
         android:textColor="@android:color/white"
         android:textSize="10sp"
-        android:layout_marginLeft="50dp" />
+        android:layout_marginLeft="50dp"
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/seekbars"
@@ -157,7 +158,8 @@
             android:max="5"
             android:paddingLeft="5dip"
             android:paddingRight="10dip"
-            android:progress="500" >
+            android:progress="500"
+            android:visibility="invisible">
         </SeekBar>
 
     </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CameraBridgeViewBase"><attr format="boolean" name="show_fps"/><attr format="integer" name="camera_id"><enum name="any" value="-1"/><enum name="back" value="99"/><enum name="front" value="98"/></attr></declare-styleable>
-    <!-- From: file:/Users/alexbrandner/Documents/2015/EyeTrackingExample/libs/opencv/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/Users/alexbrandner/Documents/GitHub%20Projects%202015/EyeTrackingLockScreen/libs/opencv/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <string name="blinktxt">BLINZELN SIE ABSCHLIESSEND\nZUR BESTÄTIGUNG</string>
     <string name="buffertxt">Buffergröße in f/s</string>
