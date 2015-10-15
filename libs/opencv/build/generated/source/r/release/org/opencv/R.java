@@ -51,7 +51,8 @@ containing a value of this type.
         public static int hinttxt=0x7f020006;
         public static int intervaltxt=0x7f020007;
         public static int opentxt=0x7f020008;
-        public static int userbtntxt=0x7f020009;
+        public static int restxt=0x7f020009;
+        public static int userbtntxt=0x7f02000a;
     }
     public static final class styleable {
         /** Attributes that can be used with a CameraBridgeViewBase.

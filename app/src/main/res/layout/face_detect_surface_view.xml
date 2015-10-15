@@ -50,6 +50,15 @@
             android:textSize="200dp"
             android:alpha="0.5" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/restxt"
+            android:id="@+id/resCheckBox"
+            android:layout_gravity="right|top"
+            android:checked="false"
+            android:onClick="changeResolution" />
+
     </FrameLayout>
 
     <TextView

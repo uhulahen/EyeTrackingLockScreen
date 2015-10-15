@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -92,6 +93,8 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
 
     private CameraBridgeViewBase mOpenCvCameraView;
 
+
+    private CheckBox resCheckBox;
     private SeekBar mMethodSeekbar;
     private TextView mValue;
     private TextView mHelpText;
@@ -196,6 +199,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
                         Log.e(TAG, "Failed to load cascade. Exception thrown: " + e);
                     }
                     mOpenCvCameraView.setCameraIndex(1);
+                    //mOpenCvCameraView.setMaxFrameSize(320,240);
                     mOpenCvCameraView.enableFpsMeter();
                     mOpenCvCameraView.enableView();
 
@@ -353,6 +357,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
         seekBarBuffer = (SeekBar) findViewById(R.id.seekBarBuffer);
         seekBarInterval = (SeekBar) findViewById(R.id.seekBarInterval);
 
+        resCheckBox = (CheckBox) findViewById(R.id.resCheckBox);
         /*seekBarLeft.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -509,7 +514,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
     }
 
     public void onCameraViewStopped() {
-        //Alex: Darf nicht released werden -> sonst Error beim nächsten Start (bei locked Screen)
+        //Alex: Shouldn't be released -> error at the next start (on locked screen) otherwise
         /*mGray.release();
         mRgba.release();
         mZoomWindow.release();
@@ -568,7 +573,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
                     (r.width - 2 * r.width / 16) / 2, (int) (r.height / 3.0));
             // draw the area - mGray is working grayscale mat, if you want to
             // see area in rgb preview, change mGray to mRgba
-            // Alex: Eye Area ist rot
+            // Alex: Eye Area is red
             Imgproc.rectangle(mRgba, eyearea_left.tl(), eyearea_left.br(),
                     new Scalar(255, 0, 0, 255), 2);
             Imgproc.rectangle(mRgba, eyearea_right.tl(), eyearea_right.br(),
@@ -668,9 +673,9 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
         }
         List<Double> list = new ArrayList<Double>();
         xyBuffer.add(list);
-        if(flag){                           //Alex: linkes Auge
+        if(flag){                           //Alex: left Eye
             list.add(x - eyeAreax);
-        }else{                              //Alex: rechtes Auge
+        }else{                              //Alex: right Eye
             list.add(eyeAreax - x);
         }
 
@@ -844,7 +849,7 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
                 255));
         Rect rec = new Rect(matchLoc_tx,matchLoc_ty);
         if(flag){
-                                //TODO: Alex: Relative Position des rechten Auges berechnen und in die Gestenentscheidung mit einbeziehen; Achtung: Rechtes Auge bewegt sich aufgrund der Kameraposition weniger als das linke
+                                //TODO: Alex: Calculate relative position of right eye and include it into gesture recognition decision. Warning: Right eye moves less because of camera position
             bufferFlagLeft=true;
             bufferFlagRight=true;
 
@@ -949,6 +954,18 @@ public class FdActivity extends Activity implements CvCameraViewListener2, Locks
         hideSettings(v);
         closedOverlayFlag = true;
         lytOverlay.setVisibility(View.VISIBLE);
+    }
+    public void changeResolution(View v){
+        if(resCheckBox.isChecked()) {
+            mOpenCvCameraView.setMaxFrameSize(320, 240);
+            mOpenCvCameraView.disableView();
+            mOpenCvCameraView.enableView();
+            Log.i(TAG, "Resolution changed!");
+        }else{
+            mOpenCvCameraView.setMaxFrameSize(960, 720);
+            mOpenCvCameraView.disableView();
+            mOpenCvCameraView.enableView();
+        }
     }
     public void showClosed(){
         runOnUiThread(new Runnable() {

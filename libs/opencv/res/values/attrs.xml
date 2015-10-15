@@ -23,4 +23,6 @@
     <string name="userbtntxt">Anwenderansicht</string>
     <string name="buffertxt">Buffergröße in f/s</string>
     <string name="intervaltxt">Intervallgröße in ms</string>
+
+    <string name="restxt">Res: 320x240</string>
 </resources>

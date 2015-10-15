@@ -13,5 +13,6 @@
     <string name="hinttxt">(LINKS - RECHTS - LINKS)</string>
     <string name="intervaltxt">Intervallgröße in ms</string>
     <string name="opentxt">DER SCREEN WURDE ENTSPERRT</string>
+    <string name="restxt">Res: 320x240</string>
     <string name="userbtntxt">Anwenderansicht</string>
 </resources>

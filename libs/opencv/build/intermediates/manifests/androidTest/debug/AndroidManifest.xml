@@ -3,7 +3,7 @@
     package="org.opencv.test" >
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="8"
         android:targetSdkVersion="22" />
 
     <instrumentation
